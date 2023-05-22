@@ -1,6 +1,6 @@
 
 export default function Politics() {
     return (
-        <h1>In the App </h1>
+        <h1>In the politics </h1>
     )
 }
