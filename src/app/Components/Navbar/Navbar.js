@@ -6,7 +6,9 @@ const Navbar = () => {
     const [searchValue, setSearchValue] = useState('')
     return (
         <div className='flex p-5 bg-white justify-between items-center'>
-            <Image src={logo} alt='Logo not found' height={80} />
+            <Link href="/">
+                <Image src={logo} alt='Logo not found' height={80} />
+            </Link>
             <div className='flex items-center'>
                 <form>
                     <input type='text' placeholder='Search for a news' value={searchValue} onChange={(e) => setSearchValue(e.target.value)}
