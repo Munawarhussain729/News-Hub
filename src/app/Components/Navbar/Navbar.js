@@ -14,8 +14,12 @@ const Navbar = () => {
         fetch(`https://newsapi.org/v2/top-headlines?category=${searchValue}&language=en&pageSize=20&apiKey=${API_KEY}`)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-                dispatch(insertArticles(data?.articles))
+                if (data.articles.length !== 0) {
+                    dispatch(insertArticles(data?.articles))
+                }
+                else{
+                    alert("No news on this Category")
+                }
             })
             .catch(error => {
                 // Handle any errors here

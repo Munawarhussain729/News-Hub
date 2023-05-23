@@ -12,7 +12,7 @@ export default function Politics() {
       fetch(`https://newsapi.org/v2/top-headlines?category=politics&language=en&pageSize=20&apiKey=${API_KEY}`)
         .then(response => response.json())
         .then(data => {
-          console.log(data);
+         
           dispatch(insertArticles(data?.articles))
         })
         .catch(error => {
