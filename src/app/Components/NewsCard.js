@@ -4,7 +4,7 @@ import React from 'react';
 const NewsCard = ({ newsData }) => {
     return (
         <div className="flex h-300">
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow my-3 mx-5 flex-grow">
+            <div className="max-w-md bg-white border border-gray-200 rounded-lg shadow my-3 mx-2 flex-grow">
                 <img
                     className="rounded-t-lg"
                     src={newsData?.urlToImage}
