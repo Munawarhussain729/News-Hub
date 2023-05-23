@@ -10,7 +10,6 @@ export default function DashboardLayout({
             <Navbar />
             <div className="py-10 px-64">
                 <h1 className="text-8xl font-bold">News Hub</h1>
-                
                 {children}
             </div>
         </section>

@@ -16,7 +16,6 @@ export default function Politics() {
           dispatch(insertArticles(data?.articles))
         })
         .catch(error => {
-          // Handle any errors here
           console.error(error);
         });
   
