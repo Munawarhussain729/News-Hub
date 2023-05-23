@@ -8,11 +8,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Politics() {
-
   const dispatch = useDispatch()
-
+  const category = 'politics'
   useEffect(() => {
-    fetch(`https://newsapi.org/v2/top-headlines?category=politics&language=en&pageSize=20&apiKey=${API_KEY}`)
+    fetch(`https://newsapi.org/v2/top-headlines?category=${category}&language=en&pageSize=20&apiKey=${API_KEY}`)
       .then(response => response.json())
       .then(data => {
         dispatch(insertArticles(data?.articles))

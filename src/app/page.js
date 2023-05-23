@@ -10,8 +10,9 @@ import NewsCard from "./Components/NewsCard";
 
 export default function Home() {
   const dispatch = useDispatch();
+  const category = 'Technology'
   useEffect(() => {
-    fetch(`https://newsapi.org/v2/top-headlines?category=sports&language=en&pageSize=20&apiKey=${API_KEY}`)
+    fetch(`https://newsapi.org/v2/top-headlines?category=${category}&language=en&pageSize=20&apiKey=${API_KEY}`)
       .then(response => response.json())
       .then(data => {
         dispatch(insertArticles(data?.articles))
