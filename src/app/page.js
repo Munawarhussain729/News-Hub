@@ -14,7 +14,6 @@ export default function Home() {
     fetch(`https://newsapi.org/v2/top-headlines?category=sports&language=en&pageSize=20&apiKey=${API_KEY}`)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         dispatch(insertArticles(data?.articles))
       })
       .catch(error => {
@@ -25,7 +24,6 @@ export default function Home() {
   }, [])
   const selector = useSelector((state) => state)
   const newsData = selector?.newSlice?.newsArticles
-  console.log("Data", newsData)
   return (
     <div className="bg-white">
       <Navbar />

@@ -31,17 +31,16 @@ const MainHeadline = () => {
                     <img src={MainHeadingData?.urlToImage}
                         alt="thumnail to found" width={800} height={800} />
                 </div>
-                <div className="p-20  bg-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
+                <div className="px-20  bg-white rounded-b  flex flex-col justify-between  items-center leading-normal">
                     <div className="mb-8">
                         <p>{normalTime}</p>
                         <p className="text-gray-900 font-bold text-4xl my-4">{MainHeadingData?.title}</p>
                         <p className="text-gray-700 text-base">{MainHeadingData?.description}</p>
-                    </div>
-                    <div className="flex items-center">
-                        <div className="text-sm">
+                        <div className="text-sm my-5">
                             <p className="text-gray-900 leading-none">{MainHeadingData?.author}</p>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
