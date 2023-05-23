@@ -1,15 +1,16 @@
 'use client'
+import { API_KEY } from '@/app/APIKEY';
+import MainHeadline from '@/app/Components/MainHeadline';
+import NewsCard from '@/app/Components/NewsCard';
+import { insertArticles } from '@/app/store/newsSlice';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 
-import { API_KEY } from "@/app/APIKEY";
-import MainHeadline from "@/app/Components/MainHeadline"
-import NewsCard from "@/app/Components/NewsCard";
-import { insertArticles } from "@/app/store/newsSlice";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
-export default function Politics() {
+export default function Business() {
+
   const dispatch = useDispatch()
-  const category = 'politics'
+  const category = "business";
   useEffect(() => {
     fetch(`https://newsapi.org/v2/top-headlines?category=${category}&language=en&pageSize=20&apiKey=${API_KEY}`)
       .then(response => response.json())

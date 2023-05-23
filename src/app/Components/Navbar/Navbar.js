@@ -16,7 +16,7 @@ const Navbar = () => {
                 </form>
                 <Link href="/dashboard/sports" className='font-medium m-2 text-xl'>Sports</Link>
                 <Link href="/dashboard/politics" className='font-medium m-2 text-xl'>Politics</Link>
-                <Link href="/dashboard/pakistan" className='font-medium m-2 text-xl'>Pakistan</Link>
+                <Link href="/dashboard/business" className='font-medium m-2 text-xl'>Business</Link>
             </div>
         </div>
     )
