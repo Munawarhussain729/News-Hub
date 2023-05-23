@@ -25,6 +25,7 @@ export default function Home() {
   }, [])
   const selector = useSelector((state) => state)
   const newsData = selector?.newSlice?.newsArticles
+ 
   return (
     <div className="bg-white">
       <Navbar />

@@ -10,7 +10,7 @@ export const newSlice = createSlice({
   reducers: {
     insertArticles: (state, action) => {
       const FilteredArray = action.payload.filter((item) => item.urlToImage !== null)
-      console.log("Filtere array ", FilteredArray);
+
       state.newsArticles = [...FilteredArray]
     },
     decrement: (state) => {

@@ -22,7 +22,7 @@ const MainHeadline = () => {
     };
 
     const normalTime = date.toLocaleString('en-US', options);
-    console.log("main Head", MainHeadingData)
+
     return (
         <div className='my-20'>
             <div className="max-w-sm w-full lg:max-w-full lg:flex">
