@@ -15,7 +15,6 @@ const NewsCard = ({ newsData }) => {
                     className="rounded-t-lg"
                     src={imageError?'http://www.listercarterhomes.com/wp-content/uploads/2013/11/dummy-image-square.jpg' :newsData?.urlToImage}
                     alt="Thumbnail not found"
-                    width={400}
                     height={400}
                     onError={handleImageError}
                 />

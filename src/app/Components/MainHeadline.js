@@ -34,7 +34,7 @@ const MainHeadline = () => {
                 <div className="h-48 lg:h-auto lg:w-100 flex-none bg-cover rounded-t 
                 lg:rounded-t-none lg:rounded-l text-center overflow-hidden " title="Woman holding a mug">
                     <img src={imageError ? 'http://www.listercarterhomes.com/wp-content/uploads/2013/11/dummy-image-square.jpg' : MainHeadingData?.urlToImage}
-                        alt="thumnail to found" width={800} height={500} onError={handleImageError}  style={{maxWidth:'500px', maxHeight:'500px'}}/>
+                        alt="thumnail to found" width={800} height={500} onError={handleImageError}  style={{maxWidth:'800px', maxHeight:'500px'}}/>
                 </div>
                 <div className="px-20  bg-white rounded-b  flex flex-col justify-between  items-center leading-normal">
                     <div className="mb-8">

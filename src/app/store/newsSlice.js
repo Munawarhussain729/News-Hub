@@ -9,7 +9,7 @@ export const newSlice = createSlice({
   initialState,
   reducers: {
     insertArticles: (state, action) => {
-      const FilteredArray = action.payload.filter((item) => item.urlToImage !== null)
+      const FilteredArray = action?.payload?.filter((item) => item.urlToImage !== null)
 
       state.newsArticles = [...FilteredArray]
     },
