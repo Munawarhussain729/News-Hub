@@ -5,17 +5,19 @@ import Link from 'next/link'
 import { API_KEY } from '@/app/APIKEY'
 import { useDispatch } from 'react-redux'
 import { insertArticles } from '@/app/store/newsSlice'
-const Navbar = () => {
+const Navbar = ({setShowLoader}) => {
     const [searchValue, setSearchValue] = useState('')
     const dispatch = useDispatch();
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
+        setShowLoader(true)
         fetch(`https://newsapi.org/v2/top-headlines?category=${searchValue}&language=en&pageSize=20&apiKey=${API_KEY}`)
             .then(response => response.json())
             .then(data => {
                 if (data.articles.length !== 0) {
                     dispatch(insertArticles(data?.articles))
+                    setShowLoader(false)
                 }
                 else{
                     alert("No news on this Category")

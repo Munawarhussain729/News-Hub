@@ -10,6 +10,11 @@ const MainHeadline = () => {
     const selector = useSelector((state) => state)
     const MainHeadingData = selector?.newSlice?.newsArticles[0]
     const date = new Date(MainHeadingData?.publishedAt);
+    const [imageError, setImageError] = useState(false);
+
+    const handleImageError = () => {
+        setImageError(true);
+    };
 
     const options = {
         year: 'numeric',
@@ -28,8 +33,8 @@ const MainHeadline = () => {
             <div className="max-w-sm w-full lg:max-w-full lg:flex">
                 <div className="h-48 lg:h-auto lg:w-100 flex-none bg-cover rounded-t 
                 lg:rounded-t-none lg:rounded-l text-center overflow-hidden " title="Woman holding a mug">
-                    <img src={MainHeadingData?.urlToImage}
-                        alt="thumnail to found" width={800} height={800} />
+                    <img src={imageError ? 'http://www.listercarterhomes.com/wp-content/uploads/2013/11/dummy-image-square.jpg' : MainHeadingData?.urlToImage}
+                        alt="thumnail to found" width={800} height={500} onError={handleImageError}  style={{maxWidth:'500px', maxHeight:'500px'}}/>
                 </div>
                 <div className="px-20  bg-white rounded-b  flex flex-col justify-between  items-center leading-normal">
                     <div className="mb-8">
@@ -40,7 +45,7 @@ const MainHeadline = () => {
                             <p className="text-gray-900 leading-none">{MainHeadingData?.author}</p>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
