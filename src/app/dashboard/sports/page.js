@@ -21,6 +21,8 @@ export default function Sports() {
       })
       .catch(error => {
         // Handle any errors here
+        alert(error.message)
+        setShowLoader(false);
         console.error(error);
       });
 

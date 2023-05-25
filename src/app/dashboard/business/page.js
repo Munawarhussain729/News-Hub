@@ -22,6 +22,8 @@ export default function Business() {
       })
       .catch(error => {
         // Handle any errors here
+        alert(error.message)
+        setShowLoader(false);
         console.error(error);
       });
 
