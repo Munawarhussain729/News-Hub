@@ -7,8 +7,7 @@ import { API_KEY } from '../APIKEY'
 
 const MainHeadline = () => {
     const [newData, setNewsData] = useState({})
-    const selector = useSelector((state) => state)
-    const MainHeadingData = selector?.newSlice?.newsArticles[0]
+    const MainHeadingData = useSelector((state) => state.news.newsArticles[0]);
     const date = new Date(MainHeadingData?.publishedAt);
     const [imageError, setImageError] = useState(false);
 
