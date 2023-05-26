@@ -1,22 +1,23 @@
 'use client'
+import { API_KEY } from '@/app/APIKEY';
+import Loader from '@/app/Components/Loader';
+import MainHeadline from '@/app/Components/MainHeadline';
+import NewsCard from '@/app/Components/NewsCard';
+import { insertArticles } from '@/app/store/newsSlice';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 
-import { API_KEY } from "@/app/APIKEY";
-import Loader from "@/app/Components/Loader";
-import MainHeadline from "@/app/Components/MainHeadline"
-import NewsCard from "@/app/Components/NewsCard";
-import { insertArticles } from "@/app/store/newsSlice";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
-export default function Politics() {
+export default function Business() {
   const dispatch = useDispatch()
   const [showLoader, setShowLoader] = useState(true)
-  const category = 'politics'
+
+  const category = "business";
   // useEffect(() => {
   //   fetch(`https://newsapi.org/v2/top-headlines?category=${category}&language=en&pageSize=20&apiKey=${API_KEY}`)
   //     .then(response => response.json())
   //     .then(data => {
-  //       dispatch(insertArticles(data?.articles));
+  //       dispatch(insertArticles(data?.articles))
   //       setShowLoader(false);
   //     })
   //     .catch(error => {
