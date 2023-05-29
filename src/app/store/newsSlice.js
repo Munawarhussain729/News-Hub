@@ -13,14 +13,17 @@ export const fetchNewsArticles = createAsyncThunk(
 
 const initialState = {
   newsArticles: [],
-  resultSize: 0,
-  pageNo: 0
+  pageNo: 0,
+  category:'technology'
 }
 
 export const newSlice = createSlice({
   name: 'newsArticle',
   initialState,
   reducers: {
+    addCategory:(state,action)=>{
+      state.category = action.payload
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchNewsArticles.fulfilled, (state, action) => {
@@ -34,5 +37,5 @@ export const newSlice = createSlice({
 
 
 export const { actions } = newSlice;
-export const { insertArticles } = actions;
+export const { insertArticles,addCategory } = actions;
 export default newSlice.reducer;

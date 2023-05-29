@@ -7,14 +7,15 @@ import { useEffect, useState } from "react";
 import { fetchNewsArticles } from "./store/newsSlice";
 import NewsCard from "./Components/NewsCard";
 import Loader from "./Components/Loader";
+import Pagination from "./Components/Pagination";
 
 export default function Home() {
   const dispatch = useDispatch();
   const [showLoader, setShowLoader] = useState(true);
   const newsData = useSelector((state) => state.news.newsArticles);
-
+  const category = useSelector((state)=>state.news.category)
   useEffect(() => {
-    dispatch(fetchNewsArticles({ category: 'technology', pageNo: 1 }))
+    dispatch(fetchNewsArticles({ category: category, pageNo: 1 }))
       .unwrap()
       .then((originalPromiseResult) => {
         setShowLoader(false);
@@ -42,6 +43,7 @@ export default function Home() {
             }
             )}
           </div>
+          <Pagination  />
         </div>
       )}
     </div>
