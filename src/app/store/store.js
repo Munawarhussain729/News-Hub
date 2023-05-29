@@ -1,8 +1,12 @@
-import { configureStore } from '@reduxjs/toolkit'
-import newSlice from './newsSlice'
+import { configureStore } from '@reduxjs/toolkit';
+import newsReducer, { fetchNewsArticles } from './newsSlice';
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
-    newSlice: newSlice,
+    news: newsReducer,
   },
-})
+});
+
+store.dispatch(fetchNewsArticles({ category: 'technology', pageNo: 1 }));
+
+export default store;

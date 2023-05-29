@@ -12,22 +12,6 @@ export default function Business() {
   const dispatch = useDispatch()
   const [showLoader, setShowLoader] = useState(true)
 
-  const category = "business";
-  // useEffect(() => {
-  //   fetch(`https://newsapi.org/v2/top-headlines?category=${category}&language=en&pageSize=20&apiKey=${API_KEY}`)
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       dispatch(insertArticles(data?.articles))
-  //       setShowLoader(false);
-  //     })
-  //     .catch(error => {
-  //       // Handle any errors here
-  //       alert(error.message)
-  //       setShowLoader(false);
-  //       console.error(error);
-  //     });
-
-  // }, [])
   const selector = useSelector((state) => state)
   const newsData = selector?.newSlice?.newsArticles
   return (
