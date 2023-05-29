@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { API_KEY } from '@/app/APIKEY'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addCategory, fetchNewsArticles, insertArticles } from '@/app/store/newsSlice'
 
 
@@ -14,6 +14,8 @@ const Navbar = ({ setShowLoader }) => {
     const dispatch = useDispatch();
     const router = useRouter();
 
+    const newsData = useSelector((state) => state.news.newsArticles);
+
     const handleOnSubmit = (e) => {
         e.preventDefault()
         dispatch(addCategory(searchValue))
@@ -21,13 +23,20 @@ const Navbar = ({ setShowLoader }) => {
             .unwrap()
             .then((originalPromiseResult) => {
                 setShowLoader(false);
+                const responseData = originalPromiseResult.articles; // Assuming the API response has a "data" property
+                console.log("Response Data ", responseData);
+                if (responseData.length === 0) {
+                    dispatch(addCategory('technology'))
+                    router.push('/');
+                } else {
+                    router.push('/dashboard/search');
+                }
             })
             .catch((rejectedValueOrSerializedError) => {
-                alert("No news on this Category")
+                alert("Handle: No news on this Category")
                 setShowLoader(false)
+                router.push('/')
             });
-        router.push('/dashboard/search')
-
     }
 
     const handleOnSports = () => {
@@ -39,7 +48,7 @@ const Navbar = ({ setShowLoader }) => {
                 setShowLoader(false);
             })
             .catch((rejectedValueOrSerializedError) => {
-                alert("No news on this Category")
+                alert("Sports Page: No news on this Category")
                 setShowLoader(false)
             });
         router.push('/dashboard/sports')
@@ -54,7 +63,7 @@ const Navbar = ({ setShowLoader }) => {
                 setShowLoader(false);
             })
             .catch((rejectedValueOrSerializedError) => {
-                alert("No news on this Category")
+                alert("Business Page: No news on this Category")
                 setShowLoader(false)
             });
         router.push('/dashboard/business')
@@ -69,7 +78,7 @@ const Navbar = ({ setShowLoader }) => {
                 setShowLoader(false);
             })
             .catch((rejectedValueOrSerializedError) => {
-                alert("No news on this Category")
+                alert("Home: No news on this Category")
                 setShowLoader(false)
             });
         router.push('/')
@@ -85,7 +94,7 @@ const Navbar = ({ setShowLoader }) => {
                 setShowLoader(false);
             })
             .catch((rejectedValueOrSerializedError) => {
-                alert("No news on this Category")
+                alert("Politics Page: No news on this Category")
                 setShowLoader(false)
             });
         router.push('/dashboard/politics')

@@ -6,14 +6,23 @@ import Loader from '../Components/Loader';
 
 export default function DashboardLayout({ children }) {
     const [showLoader, setShowLoader] = useState(false)
-
+    const temp = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     return (
         <section className="bg-white">
             <Navbar setShowLoader={setShowLoader} />
-            {showLoader ? <Loader /> : (<div className="py-10 px-64">
+            <div className="py-10 px-64">
                 <h1 className="text-8xl font-bold">News Hub</h1>
-                {children}
-            </div>)}
+                <div className="flex flex-wrap justify-center">
+                    {showLoader ?
+                        (<div className="my-6 flex flex-wrap justify-center">
+                            {temp.map((item, index) => <Loader />)}
+                        </div>) : (
+                            <>
+                                {children}
+                            </>
+                        )}
+                </div>
+            </div>
         </section>
     );
 }
