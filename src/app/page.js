@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <div className="bg-white">
       <Navbar setShowLoader={setShowLoader} />
-      <div className="py-10 px-64">
+      <div className="py-10 xl:px-64 lg:px-50 md:px-20 sm:px-10">
         <h1 className="text-8xl font-bold">News Hub</h1>
         {showLoader ? <Loader /> : <MainHeadline />}
         <div className="flex flex-wrap justify-center">
