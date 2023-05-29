@@ -10,9 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function Search() {
 
-
-    const selector = useSelector((state) => state)
-    const newsData = selector?.newSlice?.newsArticles
+    const newsData = useSelector((state) => state.news.newsArticles);
     return (
         <>
             <div>

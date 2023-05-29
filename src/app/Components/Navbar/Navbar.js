@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { API_KEY } from '@/app/APIKEY'
 import { useDispatch } from 'react-redux'
-import { fetchNewsArticles, insertArticles } from '@/app/store/newsSlice'
+import { addCategory, fetchNewsArticles, insertArticles } from '@/app/store/newsSlice'
 
 
 const Navbar = ({ setShowLoader }) => {
@@ -16,6 +16,7 @@ const Navbar = ({ setShowLoader }) => {
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
+        dispatch(addCategory(searchValue))
         dispatch(fetchNewsArticles({ category: searchValue, pageNo: 1 }))
             .unwrap()
             .then((originalPromiseResult) => {
@@ -25,9 +26,11 @@ const Navbar = ({ setShowLoader }) => {
                 alert("No news on this Category")
                 setShowLoader(false)
             });
+        router.push('/dashboard/search')
+
     }
     const handleOnSports = () => {
-
+        dispatch(addCategory('sports'))
         setShowLoader(true)
         dispatch(fetchNewsArticles({ category: 'sports', pageNo: 1 }))
             .unwrap()
@@ -38,9 +41,10 @@ const Navbar = ({ setShowLoader }) => {
                 alert("No news on this Category")
                 setShowLoader(false)
             });
+        router.push('/dashboard/sports')
     }
     const handleOnBusiness = () => {
-
+        dispatch(addCategory('business'))
         setShowLoader(true)
         dispatch(fetchNewsArticles({ category: 'business', pageNo: 1 }))
             .unwrap()
@@ -51,8 +55,10 @@ const Navbar = ({ setShowLoader }) => {
                 alert("No news on this Category")
                 setShowLoader(false)
             });
+        router.push('/dashboard/business')
     }
     const handleToHome = () => {
+        dispatch(addCategory('technology'))
         setShowLoader(true)
         dispatch(fetchNewsArticles({ category: 'technology', pageNo: 1 }))
             .unwrap()
@@ -63,10 +69,10 @@ const Navbar = ({ setShowLoader }) => {
                 alert("No news on this Category")
                 setShowLoader(false)
             });
-
+        router.push('/')
     }
     const handleOnPolitics = () => {
-
+        dispatch(addCategory('politics'))
         setShowLoader(true)
         console.log("Inside Politics");
         dispatch(fetchNewsArticles({ category: 'politics', pageNo: 1 }))
@@ -78,6 +84,7 @@ const Navbar = ({ setShowLoader }) => {
                 alert("No news on this Category")
                 setShowLoader(false)
             });
+        router.push('/dashboard/politics')
     }
     return (
         <div className='flex p-5 bg-white justify-between items-center'>
