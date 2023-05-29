@@ -20,12 +20,12 @@ export default function Business() {
         <MainHeadline />
         <div className="flex flex-wrap justify-center">
           {newsData?.map((item, index) => {
-            return (
-              <NewsCard key={index} newsData={item} />
-            )
+            if (index > 0) {
+              return <NewsCard key={index} newsData={item} />
+            }
           })}
         </div>
-        <Pagination category={'business'} />
+        <Pagination />
       </div>
     </>
   )

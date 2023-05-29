@@ -11,8 +11,6 @@ import { useDispatch, useSelector } from "react-redux";
 export default function Sports() {
 
   const dispatch = useDispatch()
-  const [showLoader, setShowLoader] = useState(true)
-
   const newsData = useSelector((state) => state.news.newsArticles);
   return (
     <>
@@ -20,12 +18,12 @@ export default function Sports() {
         <MainHeadline />
         <div className="flex flex-wrap justify-center">
           {newsData?.map((item, index) => {
-            return (
-              <NewsCard key={index} newsData={item} />
-            )
+            if (index > 0) {
+              return <NewsCard key={index} newsData={item} />
+            }
           })}
         </div>
-        <Pagination category={'sports'} />
+        <Pagination />
       </div>
     </>
   )

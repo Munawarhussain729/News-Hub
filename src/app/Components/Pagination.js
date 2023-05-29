@@ -2,13 +2,25 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchNewsArticles } from '../store/newsSlice';
 import { useRouter } from 'next/navigation';
- 
+
 const Pagination = () => {
     const [pageNoRange, setPageNoRange] = useState([1, 2, 3, 4, 5])
     const [currPageNo, setCurrPageNo] = useState(1)
     const dispatch = useDispatch();
     const router = useRouter();
-    const category = useSelector((state)=>state.news.category)
+    const category = useSelector((state) => state.news.category)
+
+    const updateData = () => {
+        dispatch(fetchNewsArticles({ category: category, pageNo: currPageNo }))
+            .unwrap()
+            .then((originalPromiseResult) => {
+                setShowLoader(false);
+            })
+            .catch((rejectedValueOrSerializedError) => {
+                alert("No news on this Category")
+                setShowLoader(false)
+            });
+    }
 
     const handleNext = () => {
         if (currPageNo < 10) {
@@ -51,7 +63,17 @@ const Pagination = () => {
         console.log(currPageNo);
     }
 
-
+    useEffect(() => {
+        dispatch(fetchNewsArticles({ category: category, pageNo: currPageNo }))
+            .unwrap()
+            .then((originalPromiseResult) => {
+                
+            })
+            .catch((rejectedValueOrSerializedError) => {
+                alert("No news on this Category")
+                
+            });
+    }, [currPageNo]);
 
     return (
         <div className="flex justify-center">
@@ -62,8 +84,8 @@ const Pagination = () => {
                     </li>
                     {pageNoRange.map((item) => {
                         return (
-                            <li>
-                                <p className={`px-3 py-2 leading-tight  ${currPageNo === item ? 'bg-blue-200' : 'bg-white'} border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white cursor-pointer`}>{item}</p>
+                            <li key={item}>
+                                <p onClick={()=>{setCurrPageNo(item)}} className={`px-3 py-2 leading-tight  ${currPageNo === item ? 'bg-blue-200' : 'bg-white'} border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white cursor-pointer`}>{item}</p>
                             </li>
                         )
                     })}

@@ -29,6 +29,7 @@ const Navbar = ({ setShowLoader }) => {
         router.push('/dashboard/search')
 
     }
+
     const handleOnSports = () => {
         dispatch(addCategory('sports'))
         setShowLoader(true)
@@ -43,6 +44,7 @@ const Navbar = ({ setShowLoader }) => {
             });
         router.push('/dashboard/sports')
     }
+
     const handleOnBusiness = () => {
         dispatch(addCategory('business'))
         setShowLoader(true)
@@ -57,6 +59,7 @@ const Navbar = ({ setShowLoader }) => {
             });
         router.push('/dashboard/business')
     }
+
     const handleToHome = () => {
         dispatch(addCategory('technology'))
         setShowLoader(true)
@@ -71,6 +74,7 @@ const Navbar = ({ setShowLoader }) => {
             });
         router.push('/')
     }
+
     const handleOnPolitics = () => {
         dispatch(addCategory('politics'))
         setShowLoader(true)

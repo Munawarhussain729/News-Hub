@@ -20,12 +20,12 @@ export default function Politics() {
         <MainHeadline />
         <div className="flex flex-wrap justify-center">
           {newsData?.map((item, index) => {
-            return (
-              <NewsCard key={index} newsData={item} />
-            )
+            if (index > 0) {
+              return <NewsCard key={index} newsData={item} />
+            }
           })}
         </div>
-        <Pagination category={'politics'} />
+        <Pagination />
       </div>
     </>
   )

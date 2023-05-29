@@ -43,7 +43,7 @@ export default function Home() {
             }
             )}
           </div>
-          <Pagination category={'technology'} />
+          <Pagination  />
         </div>
       )}
     </div>
