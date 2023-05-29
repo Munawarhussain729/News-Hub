@@ -10,12 +10,12 @@ export default function DashboardLayout({ children }) {
     return (
         <section className="bg-white">
             <Navbar setShowLoader={setShowLoader} />
-            <div className="py-10 px-64">
+            <div className="py-10 xl:px-64 lg:px-50 md:px-20 sm:px-10">
                 <h1 className="text-8xl font-bold">News Hub</h1>
                 <div className="flex flex-wrap justify-center">
                     {showLoader ?
                         (<div className="my-6 flex flex-wrap justify-center">
-                            {temp.map((item, index) => <Loader />)}
+                            {temp.map((item, index) => <div key={item}> < Loader /></div>)}
                         </div>) : (
                             <>
                                 {children}
